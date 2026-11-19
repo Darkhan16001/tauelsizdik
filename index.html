@@ -3,2071 +3,1618 @@
 <html lang="kk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тәуелсіздік — ұрпаққа аманат</title>
 
-<title>Тәуелсіздік — ұрпаққа аманат | By Darkhan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --blue:#0787b8;
-  --navy:#082b4b;
-  --gold:#f0be53;
-  --ink:#193750;
-  --line:#d8e9f3;
-  --paper:#ffffff;
-  --green:#088458;
+/* ====================================
+   ТӘУЕЛСІЗДІК — PREMIUM EDITION
+   BY DARKHAN • 2026
+==================================== */
+
+:root {
+  --navy: #061d34;
+  --navy2: #0b3555;
+  --sky: #47caff;
+  --gold: #f8d68a;
+  --red: #ff7586;
+  --green: #65e7ad;
+  --white: #f8fbff;
+  --muted: #c7deec;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:"Segoe UI",Arial,sans-serif;
-  color:var(--ink);
-  background:#052b4f;
+
+* {
+  box-sizing: border-box;
 }
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", Arial, sans-serif;
+  color: var(--white);
+  background: var(--navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* НЕГІЗГІ ҚҰРЫЛЫМ */
+
+.app {
+  display: grid;
+  grid-template-columns: 285px minmax(0,1fr);
+  min-height: 100vh;
+}
+
+/* СОЛ ЖАҚ БАСҚАРУ */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 17px;
+  background: linear-gradient(
+    180deg,
+    #10496b,
+    #072d4c 55%,
+    #041b32
+  );
+  border-right: 2px solid #d7b16b;
+  scrollbar-width: thin;
+}
+
+.brand {
+  padding: 20px 12px;
+  text-align: center;
+  background: #ffdd9910;
+  border: 1px solid #f4d18c88;
+  border-radius: 20px;
+}
+
+.brand .emblem {
+  font-size: 55px;
+}
+
+.brand h2 {
+  color: var(--gold);
+  font-size: 23px;
+  margin: 8px 0;
+  padding: 0;
+  border: 0;
+  font-weight: 900;
+}
+
+.brand p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.side-heading {
+  color: var(--gold);
+  font-size: 15px;
+  margin: 18px 0 10px;
+  font-weight: 900;
+}
+
+.side-button {
+  display: block;
+  width: 100%;
+  padding: 13px 14px;
+  text-align: left;
+  margin: 6px 0;
+  background: #ffffff0c;
+  border: 1px solid #ffffff2a;
+  border-radius: 11px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.side-button:hover:not(:disabled) {
+  background: #29749c;
+}
+
+.side-button.active {
+  background: linear-gradient(
+    135deg,#ffe7ac,#d6ad60
+  );
+  color: #10283e;
+  border-color: #fff4c9;
+}
+
+.side-button.primary {
+  background: #196a92;
+  border-color: #6fc6ed;
+}
+
+.timer-box {
+  border: 1px solid #eccb82;
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  margin-top: 16px;
+  background: #ffffff0b;
+}
+
+.timer-number {
+  font-size: 41px;
+  color: var(--gold);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  margin: 8px 0;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.timer-controls button {
+  flex: 1;
+  background: #1e719b;
+  color: white;
+  border: 1px solid #68c4eb;
+  border-radius: 9px;
+  padding: 10px 5px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.clock {
+  font-size: 20px;
+  color: var(--green);
+  margin-top: 13px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.team-row {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff12;
+  border: 1px solid #ffffff22;
+  font-size: 16px;
+}
+
+.team-row strong {
+  color: var(--gold);
+}
+
+.team-row.current {
+  border: 2px solid var(--green);
+}
+
+.credit {
+  color: #b9d5e8;
+  text-align: center;
+  font-size: 13px;
+  margin: 24px 0 8px;
+}
+
+/* НЕГІЗГІ ФОН */
+
+.main {
+  position: relative;
+  padding: 20px 28px;
   background:
-    radial-gradient(ellipse at 85% 10%,#4ed6ff88,transparent 38%),
-    radial-gradient(ellipse at 12% 86%,#ffd16d66,transparent 39%),
-    linear-gradient(135deg,#02162d,#0875a2 56%,#042b50);
-}
-body::after{
-  content:"✦       ✧       ✦       ✧       ✦";
-  position:fixed;
-  top:15%;
-  left:0;
-  width:100%;
-  z-index:-1;
-  text-align:center;
-  color:#ffe8ad54;
-  font-size:35px;
-  letter-spacing:12px;
-  pointer-events:none;
-  animation:stars 13s ease-in-out infinite alternate;
-}
-@keyframes stars{
-  to{transform:translateY(100px);opacity:.2}
-}
-header{
-  background:white;
-  padding:15px 4%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  border-bottom:5px solid var(--gold);
-  box-shadow:0 5px 25px #00152c55;
-}
-.brand{
-  font-size:clamp(15px,2vw,24px);
-  color:var(--navy);
-  font-weight:900;
-}
-#pageCount{
-  color:#087cae;
-  font-weight:900;
-  white-space:nowrap;
-}
-.progress{
-  height:6px;
-  background:#cce5f1;
-}
-#progressBar{
-  width:4.1667%;
-  height:100%;
-  background:linear-gradient(90deg,#00a4d5,#ffd06a);
-  transition:width .3s;
-}
-.layout{
-  width:min(1420px,96%);
-  margin:23px auto;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 290px;
-  gap:18px;
-  align-items:start;
-}
-main{min-width:0}
-h1{
-  font-size:clamp(34px,5vw,65px);
-  color:white;
-  line-height:1.18;
-  text-shadow:0 5px 20px #00182e;
-}
-h2{
-  color:white;
-  font-size:clamp(27px,3.5vw,42px);
-  text-shadow:0 4px 14px #00182e;
-}
-h3{
-  font-size:clamp(21px,2.3vw,27px);
-  color:#075781;
-  margin:0 0 15px;
-}
-p{
-  font-size:18px;
-  line-height:1.8;
-  margin:10px 0 18px;
-}
-.hero{
-  text-align:center;
-  padding:35px 12px;
-}
-.flag{font-size:80px}
-.hero p{
-  color:#ffebaf;
-  font-size:22px;
-  font-weight:800;
-}
-.eyebrow{
-  color:#ffe39d;
-  text-transform:uppercase;
-  font-weight:900;
-  font-size:15px;
-  letter-spacing:2px;
-  padding-top:8px;
-}
-.card{
-  background:white;
-  border-radius:23px;
-  padding:clamp(19px,3vw,34px);
-  border:2px solid #e0edf5;
-  margin:17px 0;
-  box-shadow:0 12px 32px #001a3855;
-}
-.card.gold{
-  background:#fffdf7;
-  border:3px solid var(--gold);
-}
-.note{
-  background:#fff3d4;
-  border-left:5px solid #e7ae39;
-  border-radius:12px;
-  padding:18px;
-  font-size:18px;
-  line-height:1.7;
-  margin:18px 0 0;
-}
-.question{
-  background:#e7f6ff;
-  color:#104c71;
-  border-left:5px solid #058fc7;
-  padding:20px;
-  border-radius:13px;
-  font-size:21px;
-  line-height:1.65;
-  font-weight:800;
-}
-button,.external{
-  display:inline-block;
-  background:#e8f4fb;
-  color:#104a6c;
-  border:2px solid #bdd9e8;
-  border-radius:12px;
-  padding:12px 16px;
-  font:700 16px "Segoe UI",Arial,sans-serif;
-  text-decoration:none;
-  cursor:pointer;
-  transition:.15s;
-}
-button:hover,.external:hover{
-  background:#d1eaf9;
-  transform:translateY(-1px);
-}
-button:focus-visible,select:focus-visible{
-  outline:3px solid var(--gold);
-  outline-offset:3px;
-}
-button:disabled{
-  opacity:.55;
-  cursor:default;
-}
-.primary{
-  background:linear-gradient(120deg,#ffe7a3,#eeb540);
-  color:#3b2b08;
-  border-color:#d9a238;
-}
-.controls{
-  display:flex;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-  gap:9px;
-  margin:18px 0;
-}
-.sidebar{
-  position:sticky;
-  top:15px;
-}
-.sidebar .card{
-  padding:18px;
-  margin:0 0 14px;
-}
-.clock{
-  color:#077eaf;
-  font-size:38px;
-  font-weight:900;
-  font-variant-numeric:tabular-nums;
-}
-.muted{
-  color:#60768a;
-  font-size:14px;
-}
-.score{
-  padding:11px 0;
-  border-bottom:1px solid var(--line);
-}
-.score-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-}
-.score-top strong{font-size:16px}
-.score-top b{
-  font-size:26px;
-  color:#087dae;
-}
-.score-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:6px;
-  margin-top:7px;
-}
-.score-actions button{
-  padding:7px 11px;
-  font-size:13px;
-}
-.tabs{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-  margin:17px 0;
-}
-.tabs button{
-  padding:14px 6px;
-  font-size:clamp(12px,2vw,17px);
-}
-.tabs button.active{
-  background:#086c98;
-  color:white;
-  border-color:var(--gold);
-}
-.stage{
-  background:#f3faff;
-  border:2px solid var(--line);
-  padding:22px;
-  border-radius:16px;
-  margin:16px 0;
-}
-.stage-label{
-  color:#077cad;
-  font-size:17px;
-  font-weight:900;
-  text-transform:uppercase;
-  margin-bottom:15px;
-}
-.options{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-  margin:20px 0;
-}
-.choice{
-  width:100%;
-  display:flex;
-  align-items:center;
-  text-align:left;
-  gap:12px;
-  min-height:94px;
-  background:white;
-  padding:16px;
-  font-size:18px;
-}
-.letter{
-  flex:none;
-  display:grid;
-  place-items:center;
-  width:40px;
-  height:40px;
-  border-radius:10px;
-  background:#e2f1fc;
-  color:#0871a2;
-  font-weight:900;
-}
-.choice.correct{
-  background:#e0f8ea;
-  border-color:#2ea976;
-  color:#075b3d;
-}
-.choice.wrong{
-  background:#fff0e9;
-  border-color:#d98368;
-  color:#8b3d27;
-}
-.feedback{
-  padding:17px;
-  border-radius:12px;
-  background:#e6f4ff;
-  color:#124c74;
-  line-height:1.7;
-  font-size:18px;
-  font-weight:800;
-  margin-top:15px;
-}
-.feedback.success{
-  background:#e1f8ea;
-  color:#075c3c;
-}
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:17px;
-  margin:20px 0;
-}
-.flip-card{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  gap:11px;
-  padding:20px;
-  min-height:180px;
-  border:3px solid var(--gold);
-  background:linear-gradient(145deg,#075d8e,#082b4d);
-  color:white;
-  border-radius:19px;
-}
-.flip-card .symbol{font-size:39px}
-.flip-card strong{
-  font-size:19px;
-  line-height:1.5;
-}
-.flip-card.open{
-  background:#e9f6ff;
-  border-color:#50a6cf;
-  color:#163951;
-}
-.answer{
-  background:#e5f8ee;
-  border:2px solid #a8dec2;
-  color:#075c3e;
-  border-radius:12px;
-  padding:18px;
-  font-size:18px;
-  line-height:1.7;
-  margin:15px 0;
-}
-.video{
-  display:block;
-  width:100%;
-  aspect-ratio:16/9;
-  border:0;
-  border-radius:16px;
-  margin:17px 0;
-  background:#061b34;
-}
-.video-pick{
-  display:flex;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-  gap:9px;
-  margin:14px 0;
-}
-.video-pick .active{
-  background:#075e88;
-  color:white;
-}
-.speech-steps{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;
-  margin:20px 0;
-}
-.step{
-  background:#e9f5fc;
-  border:2px solid #d6e9f4;
-  border-radius:13px;
-  padding:17px 10px;
-  font-size:16px;
-  font-weight:800;
-  line-height:1.6;
-  text-align:center;
-}
-.farewell{
-  text-align:center;
-  padding:32px 20px;
-  background:linear-gradient(145deg,#fffdf3,#e7f5fd);
-  border:3px solid var(--gold);
-  border-radius:20px;
-}
-.farewell h3{
-  font-size:clamp(25px,4vw,39px);
-  color:#075e91;
-}
-.farewell .big{
-  font-size:clamp(27px,4.5vw,45px);
-  font-weight:900;
-  color:#075887;
-  line-height:1.4;
-}
-.result{
-  background:#e9f6ff;
-  border:2px solid #b6dfef;
-  border-radius:16px;
-  padding:22px;
-  margin:18px 0;
-  text-align:center;
-  font-size:27px;
-  color:#075c8c;
-  font-weight:900;
-}
-.nav{
-  background:white;
-  padding:15px;
-  border-radius:16px;
-  display:flex;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:10px;
-  margin-top:19px;
-}
-.nav select{
-  margin-right:auto;
-  padding:12px;
-  border:2px solid #c0dbea;
-  border-radius:11px;
-  background:white;
-  color:#12496c;
-  font:700 15px "Segoe UI",Arial,sans-serif;
-}
-footer{
-  color:white;
-  text-align:center;
-  font-weight:800;
-  padding:30px;
-}
-@media(max-width:970px){
-  .layout{grid-template-columns:1fr}
-  .sidebar{position:static}
-}
-@media(max-width:580px){
-  p{font-size:17px}
-  .card{border-radius:16px}
-  .options,.card-grid{grid-template-columns:1fr}
-  .tabs{gap:5px}
-  .speech-steps{grid-template-columns:1fr}
-  .nav select{width:100%}
+    radial-gradient(
+      ellipse at 90% 5%,
+      #eab45a25,
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 12% 85%,
+      #15a5de30,
+      transparent 48%
+    ),
+    linear-gradient(
+      145deg,
+      #0e5377,
+      #082e4d 50%,
+      #04172c
+    );
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.topbar .label {
+  letter-spacing: .5px;
+}
+
+/* СЛАЙДТАР */
+
+.slide {
+  display: none;
+  position: relative;
+  min-height: calc(100vh - 100px);
+  padding: clamp(28px, 3.5vw, 58px);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  background:
+    radial-gradient(
+      circle at 88% 6%,
+      #eec46b18,
+      transparent 40%
+    ),
+    linear-gradient(
+      130deg,
+      #124b71,
+      #0a2c4c 52%,
+      #071d34
+    );
+  border: 2px solid #e8c57e;
+  border-radius: 25px;
+  box-shadow:
+    0 20px 60px #0006,
+    inset 0 0 45px #ffffff08;
+}
+
+.slide.active {
+  display: block;
+  animation: enter .3s ease-out;
+}
+
+@keyframes enter {
+  from {
+    opacity: .45;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #f9d789,
+    #fff0c2,
+    #f9d789,
+    transparent
+  );
+}
+
+.slide::after {
+  content: "✦";
+  position: absolute;
+  right: 23px;
+  top: 17px;
+  color: #f8d68a8c;
+  font-size: 30px;
+  pointer-events: none;
+}
+
+/* БІРІНШІ БЕТТІҢ МЕРЕКЕЛІК ФОНЫ */
+
+.slide.hero {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(4,32,57,.87),
+      rgba(3,51,79,.79)
+    ),
+    url("https://massaget.kz/userdata/news/news_121900/image_l.jpg")
+      center / cover no-repeat,
+    #104569;
+}
+
+.hero-content {
+  text-align: center;
+  margin: auto;
+  max-width: 1100px;
+}
+
+.hero-symbol {
+  font-size: 90px;
+  margin-bottom: 12px;
+}
+
+.hero-number {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 1px solid var(--gold);
+  background: #061c33c9;
+  color: var(--gold);
+  font-size: 26px;
+  font-weight: 900;
+}
+
+/* ТИПОГРАФИЯ */
+
+.eyebrow {
+  font-size: clamp(18px,1.5vw,24px);
+  letter-spacing: .7px;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 13px;
+}
+
+h1 {
+  color: #ffe1a2;
+  font-weight: 900;
+  font-size: clamp(38px,4.1vw,70px);
+  line-height: 1.25;
+  margin: 14px 0 28px;
+}
+
+h2 {
+  color: #ffe1a2;
+  font-weight: 900;
+  font-size: clamp(32px,3vw,51px);
+  line-height: 1.28;
+  margin: 10px 0 23px;
+}
+
+h3 {
+  color: #76d9ff;
+  font-size: clamp(25px,2.2vw,35px);
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 10px 0 18px;
+}
+
+p, li {
+  font-size: clamp(23px,1.95vw,32px);
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+li {
+  margin-bottom: 9px;
+}
+
+li::marker {
+  color: var(--gold);
+}
+
+.blue { color: #71d8ff; font-weight: 800; }
+.red { color: #ff8796; font-weight: 800; }
+.green { color: #77f1bc; font-weight: 800; }
+.gold { color: #ffdc91; font-weight: 800; }
+
+.center { text-align: center; }
+
+.small {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* САЛТАНАТТЫ РАМКАЛАР */
+
+.frame {
+  padding: 22px 27px;
+  margin: 18px 0;
+  border: 1px solid #d3e9f55b;
+  border-left: 6px solid var(--gold);
+  border-radius: 17px;
+  background:
+    linear-gradient(
+      115deg,
+      #ffffff18,
+      #ffffff05
+    );
+  box-shadow: 0 8px 26px #0002;
+}
+
+.frame p {
+  margin: 5px 0;
+}
+
+.frame h3 {
+  margin-top: 0;
+}
+
+.frame.blue-border { border-left-color: var(--sky); }
+.frame.red-border { border-left-color: var(--red); }
+.frame.green-border { border-left-color: var(--green); }
+
+/* ФОТОСУРЕТТЕР */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 25px;
+}
+
+.photo {
+  width: 100%;
+  max-height: 470px;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px #0007;
+}
+
+.caption {
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ӨЛЕҢ */
+
+.poem {
+  white-space: pre-line;
+  text-align: center;
+  font-size: clamp(25px,2.2vw,36px);
+  line-height: 1.85;
+  font-weight: 600;
+  padding: 25px;
+  border: 2px solid #e9c982;
+  border-radius: 19px;
+  background: #ffda7909;
+}
+
+/* САХНАЛЫҚ КӨРІНІС */
+
+.dialogue {
+  margin: 13px 0;
+  padding: 15px 22px;
+  background: #ffffff10;
+  border-left: 5px solid var(--sky);
+  border-radius: 12px;
+}
+
+.dialogue:nth-of-type(3n) {
+  border-left-color: var(--red);
+}
+
+.dialogue:nth-of-type(3n+1) {
+  border-left-color: var(--green);
+}
+
+.dialogue b {
+  color: var(--gold);
+  font-size: 23px;
+}
+
+.dialogue p {
+  margin: 6px 0;
+  font-size: clamp(23px,1.85vw,30px);
+}
+
+/* САЙТ ІШІНДЕГІ ВИДЕО */
+
+.video-frame {
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border: 3px solid var(--gold);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 15px 40px #0006;
+}
+
+.video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-info {
+  font-size: 18px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 14px;
+}
+
+/* ВИКТОРИНА */
+
+.answer {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 20px 26px;
+  margin: 13px 0;
+  color: white;
+  background: linear-gradient(120deg,#1c5d86,#123e62);
+  border: 2px solid #5ca9d1;
+  border-radius: 15px;
+  font-size: clamp(22px,1.85vw,29px);
+  font-weight: 700;
+}
+
+.answer:hover:not(:disabled) {
+  background: #2578a3;
+  border-color: var(--gold);
+}
+
+.answer.correct {
+  background: #126447;
+  border-color: var(--green);
+}
+
+.answer.wrong {
+  background: #793747;
+  border-color: var(--red);
+}
+
+.answer:disabled { opacity: 1; }
+
+.action {
+  border: 1px solid #fff0bf;
+  background: linear-gradient(135deg,#ffe4a3,#dcb260);
+  color: #102b42;
+  font-size: 20px;
+  font-weight: 900;
+  border-radius: 12px;
+  padding: 14px 22px;
+  margin: 8px 8px 8px 0;
+}
+
+.action.secondary {
+  color: white;
+  background: #216f99;
+  border-color: #91d8f6;
+}
+
+.score-card {
+  border: 1px solid #e7c47a;
+  background: #ffffff0f;
+  padding: 18px;
+  border-radius: 14px;
+  margin: 12px 0;
+  font-size: 26px;
+}
+
+@media (max-width:1000px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar {
+    height: auto;
+    max-height: 380px;
+    position: relative;
+  }
+  .main { padding: 12px; }
+  .slide { min-height: 580px; padding: 24px; }
+  .two-col { grid-template-columns: 1fr; }
+  p, li { font-size: 22px; }
+  .poem { font-size: 23px; }
+  .dialogue p { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
+<div class="app">
 
-<header>
-  <div class="brand">🇰🇿 ТӘУЕЛСІЗДІК • 35 ЖЫЛ</div>
-  <div id="pageCount">1 / 24</div>
-</header>
-
-<div class="progress">
-  <div id="progressBar"></div>
-</div>
-
-<div class="layout">
-<main>
-
-  <div id="screen"></div>
-
-  <div class="nav">
-    <select id="jumpSelect"
-      aria-label="Бетті таңдау"
-      onchange="jumpToPage(this.value)">
-    </select>
-
-    <button onclick="changePage(-1)">
-      ← Артқы бет
-    </button>
-
-    <button class="primary" onclick="changePage(1)">
-      Келесі бет →
-    </button>
-  </div>
-
-</main>
-
+<!-- СОЛ ЖАҚ БАСҚАРУ ПАНЕЛІ -->
 <aside class="sidebar">
 
-  <div class="card gold">
-    <h3>⏱ Сабақ таймері</h3>
+  <div class="brand">
+    <div class="emblem">🇰🇿</div>
+    <h2>ТӘУЕЛСІЗДІК</h2>
+    <p>35 ЖЫЛ • 1991–2026</p>
+  </div>
 
-    <div class="muted">Жалпы уақыт</div>
-    <div class="clock" id="totalClock">40:00</div>
-
-    <hr>
-
-    <div class="muted">Ағымдағы бет</div>
-    <div class="clock" id="pageClock">01:40</div>
-
-    <div class="controls">
-      <button id="timerBtn"
-        class="primary"
-        onclick="toggleTimer()">
+  <div class="timer-box">
+    <div class="side-heading">⏱ Сабақ уақыты</div>
+    <div class="timer-number" id="timerDisplay">40:00</div>
+    <div class="timer-controls">
+      <button onclick="toggleTimer()" id="timerButton">
         ▶ Бастау
       </button>
-
-      <button onclick="resetPageTime()">
-        ↻ Бет уақыты
-      </button>
+      <button onclick="resetTimer()">↻ Қайта</button>
     </div>
+    <div class="clock" id="realClock">--:--:--</div>
   </div>
 
-  <div class="card">
-    <h3>🏆 Командалар</h3>
+  <div class="side-heading">📑 Беттерді басқару</div>
+  <div id="navigation"></div>
 
-    <div id="scoreboard"></div>
+  <div class="side-heading">↔ Навигация</div>
+  <button class="side-button primary"
+    onclick="previousPage()">← Алдыңғы бет</button>
+  <button class="side-button primary"
+    onclick="nextPage()">Келесі бет →</button>
 
-    <div class="controls">
-      <button onclick="resetAll()">
-        Бәрін жаңарту
-      </button>
-    </div>
-  </div>
+  <p id="pageCounter" class="center small">1 / 19</p>
 
-  <div class="card">
-    <h3>Сабақ құрылымы</h3>
+  <button class="side-button"
+    onclick="toggleFullscreen()">⛶ Толық экран</button>
 
-    <p class="muted">
-      📖 1–12 бет — түсіндірме,
-      тарихи деректер, YouTube.
-    </p>
+  <div class="side-heading">🏆 Команда ұпайлары</div>
+  <div id="teamScores"></div>
+  <button class="side-button"
+    onclick="resetScores()">↻ Ұпайларды тазалау</button>
 
-    <p class="muted">
-      🎯 13–18 бет — 4 жауапты
-      6 тест ойыны.
-    </p>
-
-    <p class="muted">
-      🃏 19–21 бет — 3 карточкалы ойын.
-    </p>
-
-    <p class="muted">
-      🎤 22–24 бет — 3 ауызша
-      топтық пікірталас.
-    </p>
-
-    <p class="muted">
-      🇰🇿 24-бет — жеңімпаз,
-      қорытынды және қоштасу.
-    </p>
-  </div>
-
+  <div class="credit">BY DARKHAN • 2026</div>
 </aside>
+
+<main class="main">
+
+<div class="topbar">
+  <span class="label">🇰🇿 ТӘУЕЛСІЗДІК — ҰРПАҚҚА АМАНАТ</span>
+  <span>16 ЖЕЛТОҚСАН</span>
 </div>
 
-<footer>
-  🇰🇿 By Darkhan • 2026
-</footer>
+<!-- 1 -->
+<section class="slide hero active" data-title="Басты бет">
+  <div class="hero-content">
+    <div class="hero-symbol">🇰🇿</div>
+    <div class="eyebrow">ҚАЗАҚСТАН РЕСПУБЛИКАСЫ</div>
+    <h1>ТӘУЕЛСІЗДІК —<br>ҰРПАҚҚА АМАНАТ</h1>
+    <div class="hero-number">35 ЖЫЛ • 1991–2026</div>
+    <div class="frame">
+      <p class="gold">Тәуелсіздік күніне арналған
+        мерекелік ашық сабақ</p>
+      <p class="green">Еркін елдің ертеңі — білімді ұрпақ!</p>
+    </div>
+    <p class="small">BY DARKHAN</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide" data-title="Сабақ мақсаты">
+  <div class="eyebrow">01 • КІРІСПЕ</div>
+  <h2>Ашық сабақтың мақсаты</h2>
+  <div class="frame blue-border">
+    <p><span class="blue">1.</span>
+      Тәуелсіздіктің тарихи маңызын түсіндіру.</p>
+  </div>
+  <div class="frame red-border">
+    <p><span class="red">2.</span>
+      1986 жылғы Желтоқсан оқиғасын еске алу.</p>
+  </div>
+  <div class="frame green-border">
+    <p><span class="green">3.</span>
+      Мемлекеттік рәміздерге құрмет қалыптастыру.</p>
+  </div>
+  <div class="frame">
+    <p><span class="gold">4.</span>
+      Бірлікке, білімге және отансүйгіштікке тәрбиелеу.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide" data-title="Тәуелсіздік ұғымы">
+  <div class="eyebrow">02 • ТҮСІНДІРМЕ</div>
+  <h2>Тәуелсіздік дегеніміз не?</h2>
+  <div class="frame">
+    <p><span class="gold">Тәуелсіздік</span> —
+      мемлекеттің өз тағдырын өзі шешуі,
+      ішкі және сыртқы саясатын дербес жүргізуі.</p>
+  </div>
+  <p>Тәуелсіз мемлекеттің өз
+    <span class="blue">Конституциясы</span>,
+    аумағы, мемлекеттік органдары және
+    рәміздері болады.</p>
+  <div class="frame green-border">
+    <p>Тәуелсіздік —
+      <span class="green">еркіндік</span> қана емес,
+      сонымен қатар ел болашағына деген
+      <span class="red">жауапкершілік</span>.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-title="Желтоқсан тарихы">
+  <div class="eyebrow">03 • 1986 ЖЫЛ</div>
+  <h2>1986 жылғы Желтоқсан оқиғасы</h2>
+  <div class="two-col">
+    <div>
+      <div class="frame red-border">
+        <p><span class="red">17–18 желтоқсан 1986 жыл</span></p>
+        <p>Алматыда жастар наразылығы өтті.</p>
+      </div>
+      <p>Жастар республика басшылығына қатысты
+        шешімде халықтың пікірі
+        ескерілуін қалады.</p>
+      <p>Желтоқсан оқиғасы
+        <span class="gold">ұлттық сананың өсуімен</span>
+        байланысты маңызды тарихи оқиға болды.</p>
+    </div>
+    <div>
+      <img class="photo"
+        src="https://img.pac.ru/landmarks/492091/big/414E578A7F0001016FCB0576BBA56B51.jpg"
+        alt="Алматыдағы Тәуелсіздік монументі"
+        loading="lazy">
+      <div class="caption">Тәуелсіздік монументі, Алматы</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide" data-title="1991 жыл">
+  <div class="eyebrow">04 • ТАРИХИ КҮН</div>
+  <h2>16 желтоқсан — Тәуелсіздік күні</h2>
+  <div class="two-col">
+    <div>
+      <div class="frame">
+        <h3 class="gold">1991 жылғы 16 желтоқсан</h3>
+        <p>Қазақстан Республикасының
+          мемлекеттік тәуелсіздігі туралы
+          <span class="green">Конституциялық заң</span>
+          қабылданды.</p>
+      </div>
+      <p>Қазақстан халықаралық қатынастарда
+        <span class="blue">дербес мемлекет</span>
+        ретінде өз жолын бастады.</p>
+    </div>
+    <div>
+      <img class="photo"
+        src="https://massaget.kz/userdata/news/news_121900/image_l.jpg"
+        alt="Қазақстан туы және Тәуелсіздік монументі"
+        loading="lazy">
+      <div class="caption">Қазақстан Тәуелсіздігі мерекесі</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide" data-title="Тарихи даталар">
+  <div class="eyebrow">05 • ТАРИХИ ДЕРЕКТЕР</div>
+  <h2>Маңызды тарихи даталар</h2>
+  <div class="frame red-border">
+    <p><span class="red">1986 жыл</span> —
+      Желтоқсан оқиғасы.</p>
+  </div>
+  <div class="frame">
+    <p><span class="gold">1991 жыл</span> —
+      Қазақстан тәуелсіздігін жариялады.</p>
+  </div>
+  <div class="frame blue-border">
+    <p><span class="blue">1992 жыл</span> —
+      Қазақстан БҰҰ-ға мүше болды.
+      Ту мен Елтаңба бекітілді.</p>
+  </div>
+  <div class="frame green-border">
+    <p><span class="green">1993 жыл</span> —
+      ұлттық валюта — теңге енгізілді.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide" data-title="Рәміздер">
+  <div class="eyebrow">06 • ЕЛДІК РӘМІЗДЕР</div>
+  <h2>Қазақстанның мемлекеттік рәміздері</h2>
+  <div class="frame blue-border">
+    <h3>🇰🇿 Мемлекеттік Ту</h3>
+    <p>Көгілдір түс, алтын күн, қыран
+      және ұлттық ою-өрнек бейнеленген.</p>
+  </div>
+  <div class="frame">
+    <h3>Мемлекеттік Елтаңба</h3>
+    <p>Ортасында <span class="gold">шаңырақ</span>,
+      уықтар, қанатты пырақтар және жұлдыз бар.</p>
+  </div>
+  <div class="frame green-border">
+    <h3>🎵 Мемлекеттік Әнұран</h3>
+    <p>Еліміздің ресми музыкалық рәмізі.
+      Қазіргі Әнұран <span class="green">2006 жылы</span>
+      қабылданды.</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide" data-title="Өлең — 1">
+  <div class="eyebrow">07 • МӘНЕРЛЕП ОҚУ</div>
+  <h2 class="center">Тәуелсіз елім</h2>
+  <div class="poem">
+<span class="gold">Тәуелсіздік</span> — таңым менің арайлы,
+Көк аспаным нұрға толып қарайды.
+Бабалардың арманына айналған,
+Еркін елім болашағын қалайды.
+
+Желтоқсанның жаңғырығы жүректе,
+Ерлік үні сақталады тілекте.
+<span class="green">Азаттықтың</span> қадірін біз ұғынып,
+Бірлікпенен қадам басамыз келешекке.
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide" data-title="Өлең — 2">
+  <div class="eyebrow">08 • МӘНЕРЛЕП ОҚУ</div>
+  <h2 class="center">Тәуелсіз елім</h2>
+  <div class="poem">
+Көк туымыз желбіресін биікте,
+Ел намысы сақталсын әрбір жүректе.
+Туған жердің топырағын ардақтап,
+<span class="blue">Білімменен</span> жетелейік үмітке.
+
+Қазақстан — мақтанышым, тірегім,
+Саған арнап соғады әрбір жүрегім.
+Тәуелсіз ел ұрпағы боп әрқашан,
+<span class="gold">Бейбіт күнді</span> қорғау — асыл тілегім.
+  </div>
+  <p class="small center">Мерекеге арнайы жазылған өлең</p>
+</section>
+
+<!-- 10 -->
+<section class="slide" data-title="Ән — Атамекен">
+  <div class="eyebrow">09 • ПАТРИОТТЫҚ ӘН</div>
+  <h2>🎶 «Атамекен»</h2>
+  <p class="small">Ескендір Хасанғалиевтің әні</p>
+  <div class="video-frame">
+    <iframe
+      data-video="sV-46D6W7IM"
+      title="Атамекен"
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p class="video-info">
+    ▶ Бейненің ішіндегі ойнату батырмасын басыңыз.
+    YouTube сайтына ауысу қажет емес.
+  </p>
+</section>
+
+<!-- 11 -->
+<section class="slide" data-title="Ән — Көк тудың желбірегені">
+  <div class="eyebrow">10 • ПАТРИОТТЫҚ ӘН</div>
+  <h2>🎶 «Көк тудың желбірегені»</h2>
+  <p class="small">Ибрагим Ескендірдің орындауында</p>
+  <div class="video-frame">
+    <iframe
+      data-video="V2dLVZZLHEE"
+      title="Көк тудың желбірегені"
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p class="video-info">
+    ▶ Әнді сайттың өзіндегі бейнеойнатқыштан бастаңыз.
+  </p>
+</section>
+
+<!-- 12 -->
+<section class="slide" data-title="Көрініс — дайындық">
+  <div class="eyebrow">11 • САХНАЛЫҚ ҚОЙЫЛЫМ</div>
+  <h2>🎭 Желтоқсан жаңғырығы</h2>
+  <div class="frame">
+    <h3>Қатысушылар</h3>
+    <p>Екі жүргізуші, төрт студент,
+      хабарлаушы және ұстаз.</p>
+  </div>
+  <div class="frame blue-border">
+    <h3>Керекті заттар</h3>
+    <p>Орындықтар, кітаптар,
+      «Әділдік!» жазылған плакаттар,
+      Қазақстан туы.</p>
+  </div>
+  <div class="frame green-border">
+    <p>Көрініс <span class="green">3 бөлімнен</span>
+      тұрады. Кейіпкерлердің сөздері —
+      тарихи оқиғаның негізінде жазылған
+      көркем диалогтар.</p>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="slide" data-title="Көрініс — 1">
+  <div class="eyebrow">🎭 1-КӨРІНІС</div>
+  <h2>Жастардың әңгімесі</h2>
+  <p class="small">Төрт студент сахнада әңгімелесіп отыр.</p>
+
+  <div class="dialogue">
+    <b>1-жүргізуші:</b>
+    <p>1986 жыл. Желтоқсан. Алматы.
+      Елдегі өзгерістер жастарды толғандырды.</p>
+  </div>
+  <div class="dialogue">
+    <b>1-студент:</b>
+    <p>Достар, еліміздің болашағы туралы
+      өз ойымызды айтуға құқылымыз ғой!</p>
+  </div>
+  <div class="dialogue">
+    <b>2-студент:</b>
+    <p>Әрине! Әр азаматтың пікірі маңызды.
+      Біз әділдік болғанын қалаймыз!</p>
+  </div>
+  <div class="dialogue">
+    <b>3-студент:</b>
+    <p>Біз туған жерімізді жақсы көреміз.
+      Оның болашағы бәрімізге ортақ.</p>
+  </div>
+  <div class="dialogue">
+    <b>4-студент:</b>
+    <p>Онда өз пікірімізді бейбіт түрде білдірейік.</p>
+  </div>
+  <div class="dialogue">
+    <b>2-жүргізуші:</b>
+    <p>Жастар өз ойларын жеткізу үшін алаңға шықты.</p>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="slide" data-title="Көрініс — 2">
+  <div class="eyebrow">🎭 2-КӨРІНІС</div>
+  <h2>Алаңдағы үн</h2>
+  <p class="small">Студенттер плакаттар ұстап тұрады.</p>
+  <div class="dialogue">
+    <b>1-студент:</b>
+    <p>Біз <span class="red">әділдік</span> болғанын қалаймыз!</p>
+  </div>
+  <div class="dialogue">
+    <b>2-студент:</b>
+    <p>Халықтың пікірі ескерілсін!</p>
+  </div>
+  <div class="dialogue">
+    <b>Хабарлаушы:</b>
+    <p>Жастар, сабыр сақтаңыздар!
+      Өз талаптарыңызды түсіндіріңіздер.</p>
+  </div>
+  <div class="dialogue">
+    <b>3-студент:</b>
+    <p>Біз туған еліміздің болашағына
+      бейжай қарамаймыз!</p>
+  </div>
+  <div class="dialogue">
+    <b>4-студент:</b>
+    <p>Біздің тілегіміз — әділдік, құрмет және бірлік!</p>
+  </div>
+  <div class="dialogue">
+    <b>1-жүргізуші:</b>
+    <p>Наразылық қатаң басылды.
+      Желтоқсан оқиғасы тарихта маңызды із қалдырды.</p>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="slide" data-title="Көрініс — 3">
+  <div class="eyebrow">🎭 3-КӨРІНІС</div>
+  <h2>Тәуелсіздікке тағзым</h2>
+  <div class="dialogue">
+    <b>Ұстаз:</b>
+    <p>Балалар, тарихымызды білу және
+      тәуелсіздігімізді құрметтеу —
+      әр азаматтың міндеті.</p>
+  </div>
+  <div class="dialogue">
+    <b>1-студент:</b>
+    <p>Біз еліміздің тарихын ұмытпаймыз!</p>
+  </div>
+  <div class="dialogue">
+    <b>2-студент:</b>
+    <p>Біз ана тілімізді құрметтейміз!</p>
+  </div>
+  <div class="dialogue">
+    <b>3-студент:</b>
+    <p>Біз білім алып, еліміздің дамуына үлес қосамыз!</p>
+  </div>
+  <div class="dialogue">
+    <b>4-студент:</b>
+    <p>Біз бірлік пен бейбітшілікті бағалаймыз!</p>
+  </div>
+  <div class="dialogue">
+    <b>2-жүргізуші:</b>
+    <p>1991 жылғы 16 желтоқсанда
+      Қазақстан тәуелсіз мемлекет болды.</p>
+  </div>
+  <div class="dialogue">
+    <b>Барлығы:</b>
+    <p class="gold">Тәуелсіз Қазақстан жасай берсін!</p>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="slide" data-title="Викторина ережесі">
+  <div class="eyebrow">12 • БІЛІМ САЙЫСЫ</div>
+  <h2>🏆 Тәуелсіздік викторинасы</h2>
+  <div class="frame">
+    <p><span class="gold">12 сұрақ</span> беріледі.</p>
+    <p>Әр сұраққа <span class="blue">4 жауап</span> нұсқасы.</p>
+    <p>Дұрыс жауапқа <span class="green">10 ұпай</span>.</p>
+  </div>
+  <div class="frame green-border">
+    <h3>Командалардың кезегі</h3>
+    <p>1-топ → 2-топ → 3-топ → 1-топ ...</p>
+    <p>Командалар автоматты ауысады.</p>
+  </div>
+  <button class="action" onclick="showPage(16)">
+    Викторинаны бастау →
+  </button>
+</section>
+
+<!-- 17 -->
+<section class="slide" data-title="12 сұрақ">
+  <div class="eyebrow">🎯 ИНТЕРАКТИВТІ ВИКТОРИНА</div>
+  <h3 id="questionNumber"></h3>
+  <h2 id="questionText"></h2>
+  <div id="questionTeam" class="gold"></div>
+  <div id="answerList"></div>
+  <div id="questionFeedback"></div>
+  <button id="nextQuestionButton"
+    class="action"
+    onclick="nextQuestion()"
+    style="display:none">
+    Келесі сұрақ →
+  </button>
+</section>
+
+<!-- 18 -->
+<section class="slide" data-title="Командалық ойын">
+  <div class="eyebrow">13 • ШЫҒАРМАШЫЛЫҚ ЖҰМЫС</div>
+  <h2>Болашақ Қазақстан</h2>
+  <div class="frame blue-border">
+    <h3>1-топ: Білім және ғылым</h3>
+    <p>Қазақстанның білім саласын дамытуға
+      арналған 3 ұсыныс айтыңдар.</p>
+  </div>
+  <div class="frame green-border">
+    <h3>2-топ: Технология</h3>
+    <p>Еліміздің технологиясын дамытуға
+      арналған 3 идея ұсыныңдар.</p>
+  </div>
+  <div class="frame red-border">
+    <h3>3-топ: Табиғат</h3>
+    <p>Қоршаған ортаны қорғаудың
+      3 нақты жолын атаңдар.</p>
+  </div>
+  <h3>Командаларды бағалау</h3>
+  <div id="gameControls"></div>
+</section>
+
+<!-- 19 -->
+<section class="slide" data-title="Қорытынды">
+  <div class="center">
+    <div class="hero-symbol">🇰🇿</div>
+    <h1>ТӘУЕЛСІЗ ҚАЗАҚСТАН!</h1>
+    <p class="blue">Тарихымызды құрметтейік!</p>
+    <p class="green">Бірлігімізді сақтайық!</p>
+    <p class="gold">Болашақты бірге құрайық!</p>
+    <h2>🏆 Қорытынды ұпай</h2>
+    <div id="finalScores"></div>
+    <h2>Назарларыңызға рақмет!</h2>
+    <p class="small">BY DARKHAN • 2026</p>
+  </div>
+</section>
+
+</main>
+</div>
 
 <script>
 "use strict";
 
-/* ==========================================
-   24 БЕТ — ДӘЛ 40 МИНУТ
+// ======================================
+// БЕТТЕР
+// ======================================
 
-   Түсіндірмелер: 16 минут
-   6 тест: 6 минут
-   3 карточка ойыны: 6 минут
-   3 ауызша ойын: 12 минут
-   БАРЛЫҒЫ: 40 минут
-========================================== */
+const slides = [...document.querySelectorAll(".slide")];
+const navigation = document.getElementById("navigation");
+let currentPage = 0;
 
-const durations=[
-  100,70,70,65,110,60,
-  65,75,110,65,70,100,
+slides.forEach((slide, index) => {
+  const button = document.createElement("button");
+  button.className = "side-button";
+  button.textContent = `${index + 1}. ${slide.dataset.title}`;
+  button.addEventListener("click", () => showPage(index));
+  navigation.appendChild(button);
+});
 
-  60,60,60,60,60,60,
+function showPage(index) {
+  if (index < 0 || index >= slides.length) return;
 
-  120,120,120,
+  // Бұрынғы беттегі YouTube ойнатқышын тоқтату
+  slides[currentPage].querySelectorAll("iframe[data-video]")
+    .forEach(frame => {
+      frame.removeAttribute("src");
+    });
 
-  240,240,240
-];
+  currentPage = index;
 
-const TOTAL=durations.reduce(
-  (sum,seconds)=>sum+seconds,0
-);
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
 
-const teams=["Азаттық","Бірлік","Болашақ"];
-const icons=["🔵","🟡","🟢"];
+  [...navigation.children].forEach((button, i) => {
+    button.classList.toggle("active", i === index);
+  });
 
-/* ==========================================
-   НАҚТЫ YOUTUBE ВИДЕОЛАРЫ
+  document.getElementById("pageCounter").textContent =
+    `${index + 1} / ${slides.length}`;
 
-   Бірінші нұсқа ашылмаса,
-   екінші нұсқаны таңдауға болады.
-========================================== */
+  // Ағымдағы беттегі бейнені жүктеу
+  slides[index].querySelectorAll("iframe[data-video]")
+    .forEach(frame => {
+      const videoID = frame.dataset.video;
+      frame.src =
+        `https://www.youtube-nocookie.com/embed/${videoID}?rel=0`;
+    });
 
-const videos={
-  december:[
-    {
-      id:"CkFXNfBdXt4",
-      title:"16 желтоқсан — Тәуелсіздік күні және Желтоқсан оқиғасы",
-      channel:"Бастауыш сынып ұстазы"
-    },
-    {
-      id:"V_AF5FcJlkA",
-      title:"Желтоқсан оқиғасы туралы жастар не біледі?",
-      channel:"Азаттық TV"
-    }
-  ],
+  if (index === 16) renderQuestion();
+  if (index === 17) renderGame();
+  if (index === 18) renderFinal();
 
-  symbols:[
-    {
-      id:"0YvhAXp4atY",
-      title:"Мемлекеттік рәміздер тарихы",
-      channel:"Жамбыл телеарнасы"
-    },
-    {
-      id:"1lTlW6-S54M",
-      title:"Қазақстанның мемлекеттік рәміздерінің тарихы",
-      channel:"Jibek Joly TV"
-    }
-  ],
-
-  history:[
-    {
-      id:"ndG9F-Iz0uo",
-      title:"Қазақстан тәуелсіздігінің тарихы — 60 секунд",
-      channel:"Азаттық TV"
-    },
-    {
-      id:"hScjHciStFg",
-      title:"Қазақстан тәуелсіздігінің тарихы",
-      channel:"Азаттық TV"
-    }
-  ]
-};
-
-/* ==========================================
-   12 ТҮСІНДІРМЕ БЕТІ
-========================================== */
-
-const lessons=[
-{
-  title:"ТӘУЕЛСІЗДІК — ҰРПАҚҚА АМАНАТ",
-  intro:true,
-  text:[
-    "Қайырлы күн, құрметті ұстаздар, студенттер және қадірлі қонақтар! Тәуелсіздік күніне арналған ашық тәрбие сағатымызға қош келдіңіздер!",
-    "Тәуелсіздік — халқымыздың тарихындағы аса маңызды құндылық. Ол өз мемлекетіміздің болашағын дербес айқындауға, ұлттық мәдениетімізді дамытуға және халықаралық қауымдастықпен тең дәрежеде байланыс орнатуға мүмкіндік берді.",
-    "Бүгін біз маңызды тарихи оқиғаларды еске түсіріп, бейнебаяндар көріп, «Азаттық», «Бірлік», «Болашақ» командалары арасында қызықты сайыс өткіземіз."
-  ],
-  fact:"🇰🇿 Қазақстан Республикасының Мемлекеттік Әнұраны орындалады.",
-  question:"Тәуелсіздік деген сөз сен үшін нені білдіреді?"
-},
-{
-  title:"Тәуелсіздік дегеніміз не?",
-  text:[
-    "Тәуелсіздік — мемлекеттің ішкі және сыртқы саясатын дербес жүргізуі. Мемлекет өз заңдарын қабылдап, басқару жүйесін қалыптастырады және ұлттық мүдделерін қорғайды.",
-    "Тәуелсіз мемлекет өзге елдермен халықаралық қатынастар орната алады. Экономикасын, ғылымын, білімін және мәдениетін дамыту бағыттарын айқындайды.",
-    "Тәуелсіздік — еркіндікпен қатар жауапкершілік. Елдің дамуы азаматтардың біліміне, еңбегіне және ортақ мақсат жолындағы бірлігіне байланысты."
-  ],
-  fact:"Тәуелсіздік — еркіндік пен жауапкершіліктің бірлігі.",
-  question:"Тәуелсіз мемлекеттің негізгі үш белгісін атаңдар."
-},
-{
-  title:"Ұлттық тіл, тарих және мәдениет",
-  text:[
-    "Халықтың тарихи жады тілінде, әдебиетінде, өнерінде, салт-дәстүрінде және мәдени мұрасында сақталады.",
-    "Тәуелсіз мемлекет осы құндылықтарды дамытуға, зерттеуге және келесі ұрпаққа жеткізуге мүмкіндік береді.",
-    "Жастар ұлттық мәдениетті жаңа технологиялармен ұштастыра алады. Қазақ тіліндегі цифрлық білім платформалары, интерактивті музейлер мен тарихи ойындар — соның мысалы."
-  ],
-  fact:"Мәдени мұраны сақтау — оны үйрену және жаңа ұрпаққа жеткізу.",
-  question:"Қазақ тарихын жастарға қызықты етіп қалай таныстыруға болады?"
-},
-{
-  title:"Тәуелсіздікке дейінгі тарихи кезең",
-  text:[
-    "Қазақстанның тәуелсіздік жолы бір күнде басталған жоқ. Қазақ халқы тарихтың әр кезеңінде өз жерін, тілін және ұлттық болмысын сақтауға ұмтылды.",
-    "ХХ ғасырда Қазақстан Кеңес Одағы құрамында болды. Көптеген маңызды саяси шешімдер одақтық деңгейде қабылданды.",
-    "1980-жылдардың екінші жартысындағы саяси өзгерістер республикалардың мемлекеттік мәртебесі туралы мәселелерді алға шығарды."
-  ],
-  fact:"Тарихи оқиғалардың себептері мен нәтижесін ажырата білу маңызды.",
-  question:"Мемлекет үшін дербес шешім қабылдау неліктен қажет?"
-},
-{
-  title:"1986 жыл — Желтоқсан оқиғасы",
-  video:"december",
-  text:[
-    "1986 жылғы 16 желтоқсанда Қазақстан Компартиясының бірінші хатшысы Дінмұхамед Қонаев қызметінен алынып, орнына Геннадий Колбин тағайындалды.",
-    "17–18 желтоқсанда Алматыда жастар осы шешімге наразылық білдірді. Наразылық күшпен таратылып, қатысушылардың бір бөлігі кейін қудалауға ұшырады.",
-    "Желтоқсан оқиғасы Қазақстан тарихында азаматтық ұстаным мен ұлттық сана тұрғысынан ерекше орын алады."
-  ],
-  fact:"1986 жылғы Желтоқсан оқиғасы мен 1991 жылғы Тәуелсіздік туралы заң — екі бөлек тарихи оқиға.",
-  question:"Желтоқсан оқиғасының тарихи маңызы қандай?"
-},
-{
-  title:"Желтоқсан оқиғасының тарихи сабағы",
-  text:[
-    "Желтоқсан оқиғасы азаматтық ұстаным, ұлттық сана және әділдік мәселелерін түсінуде маңызды орын алады.",
-    "Тарихи оқиғаларды зерттегенде нақты деректерге, архив құжаттарына және ғылыми зерттеулерге сүйену қажет.",
-    "Бүгінгі ұрпақ үшін маңызды сабақ — өткенді құрметтеу, әртүрлі пікірді тыңдау және қоғамдық мәселелерге жауапкершілікпен қарау."
-  ],
-  fact:"Тарихты білу — өткенді түсіну және болашаққа саналы қарау.",
-  question:"Желтоқсан оқиғасы туралы жастарға қандай тарихи деректерді айту қажет?"
-},
-{
-  title:"1990 жыл — Егемендік декларациясы",
-  text:[
-    "1990 жылғы 25 қазанда Қазақ КСР-інің мемлекеттік егемендігі туралы декларация қабылданды.",
-    "Бұл құжат мемлекеттік егемендік қағидаларын жариялап, Қазақстанның болашақ тәуелсіздігіне құқықтық негіз қалыптастыруға ықпал етті.",
-    "Егемендік декларациясы мен 1991 жылғы тәуелсіздік туралы Конституциялық заң — екі бөлек тарихи құжат. Олардың қабылданған жылдарын ажырата білу маңызды."
-  ],
-  fact:"25 қазан 1990 жыл — мемлекеттік егемендік туралы декларация.",
-  question:"Егемендік декларациясының Қазақстан үшін маңызы қандай?"
-},
-{
-  title:"1991 жыл — Тәуелсіз Қазақстан",
-  text:[
-    "1991 жылғы 16 желтоқсанда Қазақстан Республикасының мемлекеттік тәуелсіздігі туралы Конституциялық заң қабылданды.",
-    "Бұл шешім Қазақстанның дербес мемлекет ретінде дамуының жаңа кезеңін бекітті.",
-    "Елдің құқықтық жүйесін, экономикасын, мемлекеттік басқаруын және халықаралық байланыстарын дамыту үшін жаңа міндеттер пайда болды."
-  ],
-  fact:"1991 жылғы 16 желтоқсан — Қазақстан тәуелсіздігінің маңызды тарихи датасы.",
-  question:"1991 жылдың Қазақстан тарихындағы орны қандай?"
-},
-{
-  title:"Мемлекеттік рәміздер",
-  video:"symbols",
-  text:[
-    "1992 жылғы 4 маусымда Қазақстан Республикасының Мемлекеттік Туы мен Елтаңбасы қабылданды.",
-    "Мемлекеттік Тудың авторы — Шәкен Ниязбеков. Туда көк түс, күн, қыран және ұлттық ою-өрнек бейнеленген.",
-    "Елтаңба авторлары — Жандарбек Мәлібеков пен Шот-Аман Уәлиханов. Елтаңбаның ортасындағы шаңырақ ортақ Отан мен бірлік идеясын білдіреді."
-  ],
-  fact:"4 маусым — Қазақстанның Мемлекеттік рәміздер күні.",
-  question:"Мемлекеттік Ту мен Елтаңбаның мағынасы қандай?"
-},
-{
-  title:"Қазақстан және халықаралық қауымдастық",
-  text:[
-    "Тәуелсіздік алғаннан кейін Қазақстан басқа мемлекеттермен дипломатиялық қатынастар орнатып, халықаралық ұйымдармен ынтымақтастығын дамытты.",
-    "1992 жылғы 2 наурызда Қазақстан Біріккен Ұлттар Ұйымына мүше болды.",
-    "Халықаралық ынтымақтастық ғылым, білім, мәдениет, экономика және басқа да салаларда ортақ жобалар жасауға мүмкіндік береді."
-  ],
-  fact:"1992 жылғы 2 наурыз — Қазақстанның БҰҰ-ға мүше болған күні.",
-  question:"Қазақстан үшін халықаралық ынтымақтастық неліктен маңызды?"
-},
-{
-  title:"Теңге және Конституция",
-  text:[
-    "1993 жылғы 15 қарашада Қазақстанның ұлттық валютасы — теңге айналымға енгізілді. Бұл дербес ақша жүйесінің қалыптасуында маңызды рөл атқарды.",
-    "1995 жылғы 30 тамызда Қазақстан Конституциясы қабылданып, ұзақ жылдар бойы мемлекеттің негізгі заңы ретінде қолданылды.",
-    "2026 жылғы 15 наурызда республикалық референдум арқылы жаңа Конституция қабылданып, 1 шілдеде күшіне енді. 1995 жылғы Конституцияның қолданылуы тоқтатылды."
-  ],
-  fact:"1993 — теңге. 1995 — бұрынғы Конституция. 2026 — жаңа Конституция.",
-  question:"Ұлттық валюта мен Конституция мемлекет үшін неге маңызды?"
-},
-{
-  title:"Тәуелсіздіктің болашағы — жастар",
-  video:"history",
-  text:[
-    "Тәуелсіздік тек өткен тарихты еске алу емес. Оны нығайту үшін білім алу, ғылымды дамыту және қоғамға пайдалы еңбек ету маңызды.",
-    "Инженер жаңа техника жасайды, бағдарламашы пайдалы цифрлық жүйелер құрады, мұғалім білім береді, кәсіпкер жаңа мүмкіндіктер қалыптастырады.",
-    "Енді үш команда өз білімін тексеріп, соңында Қазақстанның болашағы туралы идеяларын ауызша ұсынады."
-  ],
-  fact:"Қазақстанның болашағына әр мамандық иесі үлес қоса алады.",
-  question:"Сен өз мамандығың арқылы Қазақстанға қандай пайда әкеле аласың?"
-}
-];
-
-/* ==========================================
-   6 ТЕСТ ОЙЫНЫ
-   ӘР КОМАНДАҒА ЖЕКЕ СҰРАҚ
-   4 ЖАУАПТЫҢ БІРЕУІ ДҰРЫС
-========================================== */
-
-const quizzes=[
-{
-  title:"Тарихи жылдар",
-  tasks:[
-    {
-      q:"Қазақстанның тәуелсіздігі туралы Конституциялық заң қай жылы қабылданды?",
-      options:["1986","1990","1991","1993"],
-      correct:2
-    },
-    {
-      q:"Мемлекеттік Ту мен Елтаңба қай жылы қабылданды?",
-      options:["1991","1992","1995","2026"],
-      correct:1
-    },
-    {
-      q:"Ұлттық теңге қай жылы енгізілді?",
-      options:["1991","1992","1993","1995"],
-      correct:2
-    }
-  ]
-},
-{
-  title:"Желтоқсан оқиғасы",
-  tasks:[
-    {
-      q:"1986 жылғы Желтоқсан оқиғасы қай қалада өтті?",
-      options:["Алматы","Астана","Шымкент","Ақтөбе"],
-      correct:0
-    },
-    {
-      q:"Желтоқсан оқиғасына қандай шешім түрткі болды?",
-      options:[
-        "Теңгенің енгізілуі",
-        "Геннадий Колбиннің тағайындалуы",
-        "Мемлекеттік Тудың қабылдануы",
-        "Қазақстанның БҰҰ-ға кіруі"
-      ],
-      correct:1
-    },
-    {
-      q:"Желтоқсан оқиғасы қай жылы болды?",
-      options:["1980","1983","1986","1991"],
-      correct:2
-    }
-  ]
-},
-{
-  title:"Егемендік және тәуелсіздік",
-  tasks:[
-    {
-      q:"Егемендік декларациясы қай күні қабылданды?",
-      options:[
-        "25 қазан 1990",
-        "16 желтоқсан 1991",
-        "4 маусым 1992",
-        "15 қараша 1993"
-      ],
-      correct:0
-    },
-    {
-      q:"1991 жылғы 16 желтоқсанда не қабылданды?",
-      options:[
-        "Ұлттық валюта",
-        "Мемлекеттік Ту",
-        "Тәуелсіздік туралы Конституциялық заң",
-        "Жаңа Конституция"
-      ],
-      correct:2
-    },
-    {
-      q:"Егемендік нені білдіреді?",
-      options:[
-        "Спорттық жарысты",
-        "Мемлекеттік биліктің дербестігін",
-        "Музыкалық шығарманы",
-        "Ақша атауын"
-      ],
-      correct:1
-    }
-  ]
-},
-{
-  title:"Мемлекеттік рәміздер",
-  tasks:[
-    {
-      q:"Қазақстанның Мемлекеттік Туының авторы кім?",
-      options:[
-        "Абай Құнанбайұлы",
-        "Жандарбек Мәлібеков",
-        "Шәкен Ниязбеков",
-        "Құрманғазы Сағырбайұлы"
-      ],
-      correct:2
-    },
-    {
-      q:"Мемлекеттік Елтаңбаның ортасында не бейнеленген?",
-      options:["Шаңырақ","Қыран","Теңге","Кітап"],
-      correct:0
-    },
-    {
-      q:"Мемлекеттік рәміздер күні қай күні атап өтіледі?",
-      options:[
-        "16 желтоқсан",
-        "4 маусым",
-        "25 қазан",
-        "15 наурыз"
-      ],
-      correct:1
-    }
-  ]
-},
-{
-  title:"Теңге және Конституция",
-  tasks:[
-    {
-      q:"Теңге қай күні айналымға енгізілді?",
-      options:[
-        "15 қараша 1993",
-        "4 маусым 1992",
-        "16 желтоқсан 1991",
-        "30 тамыз 1995"
-      ],
-      correct:0
-    },
-    {
-      q:"Қазақстанның жаңа Конституциясы қай жылы қабылданды?",
-      options:["1991","1995","2026","1993"],
-      correct:2
-    },
-    {
-      q:"2026 жылғы жаңа Конституция қашан күшіне енді?",
-      options:[
-        "1 шілде 2026",
-        "1 қаңтар 2026",
-        "16 желтоқсан 2026",
-        "30 тамыз 2026"
-      ],
-      correct:0
-    }
-  ]
-},
-{
-  title:"Қазақстан және әлем",
-  tasks:[
-    {
-      q:"Қазақстан БҰҰ-ға қай жылы мүше болды?",
-      options:["1986","1991","1992","1995"],
-      correct:2
-    },
-    {
-      q:"БҰҰ-ның штаб-пәтері қай қалада орналасқан?",
-      options:["Алматы","Нью-Йорк","Астана","Париж"],
-      correct:1
-    },
-    {
-      q:"Қазақстан елордасы Ақмолаға қай жылы көшірілді?",
-      options:["1991","1993","1997","2001"],
-      correct:2
-    }
-  ]
-}
-];
-
-/* ==========================================
-   3 КАРТОЧКАЛЫ ОЙЫН
-   ӘР КОМАНДАҒА ЕКІ КАРТОЧКА
-========================================== */
-
-const cardGames=[
-{
-  title:"Құпия тарихи карточкалар",
-  tasks:[
-    [
-      {
-        name:"Желтоқсан",
-        q:"Желтоқсан оқиғасы қай жылы өтті?",
-        a:"1986 жылы."
-      },
-      {
-        name:"Тәуелсіздік",
-        q:"Тәуелсіздік туралы Конституциялық заң қай күні қабылданды?",
-        a:"1991 жылғы 16 желтоқсанда."
-      }
-    ],
-    [
-      {
-        name:"Егемендік",
-        q:"Егемендік декларациясы қай жылы қабылданды?",
-        a:"1990 жылы."
-      },
-      {
-        name:"Рәміздер",
-        q:"Мемлекеттік Ту мен Елтаңба қашан қабылданды?",
-        a:"1992 жылғы 4 маусымда."
-      }
-    ],
-    [
-      {
-        name:"Теңге",
-        q:"Теңге қай жылы енгізілді?",
-        a:"1993 жылы."
-      },
-      {
-        name:"Конституция",
-        q:"Жаңа Конституция қашан қабылданды?",
-        a:"2026 жылғы 15 наурызда."
-      }
-    ]
-  ]
-},
-{
-  title:"Рәміздер мен тұлғалар",
-  tasks:[
-    [
-      {
-        name:"Ту авторы",
-        q:"Мемлекеттік Тудың авторы кім?",
-        a:"Шәкен Ниязбеков."
-      },
-      {
-        name:"Тарихи қала",
-        q:"1986 жылғы Желтоқсан оқиғасы қай қалада өтті?",
-        a:"Алматы қаласында."
-      }
-    ],
-    [
-      {
-        name:"Елтаңба",
-        q:"Мемлекеттік Елтаңбаның авторлары кімдер?",
-        a:"Жандарбек Мәлібеков және Шот-Аман Уәлиханов."
-      },
-      {
-        name:"Шаңырақ",
-        q:"Елтаңбадағы шаңырақ қандай идеяны білдіреді?",
-        a:"Ортақ Отан мен бірлік идеясын."
-      }
-    ],
-    [
-      {
-        name:"Қыран",
-        q:"Мемлекеттік Тудағы қыран нені білдіреді?",
-        a:"Еркіндік пен биік мұраттарға ұмтылуды."
-      },
-      {
-        name:"БҰҰ",
-        q:"Қазақстан БҰҰ-ға қашан мүше болды?",
-        a:"1992 жылғы 2 наурызда."
-      }
-    ]
-  ]
-},
-{
-  title:"Ойлан және дәлелде",
-  tasks:[
-    [
-      {
-        name:"Тарих",
-        q:"Жастар үшін тарихты білу неліктен маңызды?",
-        a:"Өткенді түсініп, тарихи сабақтарды бағалауға көмектеседі."
-      },
-      {
-        name:"Жауапкершілік",
-        q:"Тәуелсіздік пен жауапкершілік қалай байланысты?",
-        a:"Еркіндікті сақтау үшін білім, еңбек және заңды құрметтеу маңызды."
-      }
-    ],
-    [
-      {
-        name:"Бірлік",
-        q:"Халық бірлігі неліктен маңызды?",
-        a:"Ортақ мақсатқа жету мен қоғамдағы ынтымақ үшін."
-      },
-      {
-        name:"Рәміздер",
-        q:"Мемлекеттік рәміздер не үшін қажет?",
-        a:"Олар елдің егемендігі мен бірлігін білдіреді."
-      }
-    ],
-    [
-      {
-        name:"Білім",
-        q:"Білімді жастар елге қалай көмектеседі?",
-        a:"Ғылым, технология, еңбек және пайдалы жобалар арқылы."
-      },
-      {
-        name:"Болашақ",
-        q:"Тәуелсіздікті келесі ұрпаққа аманат ету нені білдіреді?",
-        a:"Елдің еркіндігін, мәдени мұрасын және даму мүмкіндіктерін сақтау."
-      }
-    ]
-  ]
-}
-];
-
-/* ==========================================
-   3 АУЫЗША ТОПТЫҚ ОЙЫН
-   ЕШҚАНДАЙ ЖАЗУ ӨРІСІ ЖОҚ
-========================================== */
-
-const oralGames=[
-{
-  title:"Мен Қазақстанда нені өзгертер едім?",
-  description:"Әр команда өзіне берілген тақырып бойынша ақылдасып, Қазақстанды жақсарту үшін үш нақты ұсынысын ауызша айтады.",
-  tasks:[
-    "🔵 Азаттық: Қазақстандағы білім беру жүйесін қалай жақсартар едіңдер? Колледждерге арналған үш пайдалы өзгеріс ұсыныңдар.",
-    "🟡 Бірлік: Қоғамдық орындарды адамдарға ыңғайлы ету үшін нені өзгертер едіңдер? Үш нақты ұсыныс айтыңдар.",
-    "🟢 Болашақ: Қазақстан табиғатын қорғау үшін нені өзгертер едіңдер? Үш пайдалы шешім ұсыныңдар."
-  ]
-},
-{
-  title:"2041 жыл — Болашақ Қазақстан",
-  description:"2041 жылғы Қазақстанды елестетіңдер. Әр команда болашаққа қатысты өз жобасын ауызша таныстырады.",
-  tasks:[
-    "🔵 Азаттық: 2041 жылғы колледжді сипаттаңдар. Қандай зертханалар, мамандықтар және жаңа оқу әдістері болады?",
-    "🟡 Бірлік: Қазақстанда қандай жаңа технология ойлап табуға болады? Ол адамдардың қандай мәселесін шешеді?",
-    "🟢 Болашақ: 2041 жылғы экологиялық таза қаланы сипаттаңдар. Энергия, көлік пен тазалық жүйесі қандай болады?"
-  ]
-},
-{
-  title:"Тәуелсіздік — болашаққа аманат",
-  description:"Соңғы кезеңде әр команда болашақ ұрпаққа арналған қысқа үндеуін ауызша жеткізеді.",
-  tasks:[
-    "🔵 Азаттық: «Менің білімім — елімнің болашағы» тақырыбында үш маңызды ой айтыңдар.",
-    "🟡 Бірлік: «Бірлік — тәуелсіз елдің тірегі» тақырыбында ортақ үндеу жасаңдар.",
-    "🟢 Болашақ: «Қазақстанның ертеңі — біздің қолымызда» тақырыбында үш идея ұсыныңдар."
-  ]
-}
-];
-
-/* ==========================================
-   ЖАДТА САҚТАУ
-========================================== */
-
-const STORAGE="tauelsizdik_full24_farewell_v1";
-
-function initialState(){
-  return{
-    page:0,
-    team:0,
-    total:TOTAL,
-    section:durations[0],
-    quiz:{},
-    cardOpen:{},
-    cardAnswer:{},
-    cardMarks:{},
-    oralMarks:{},
-    manual:[0,0,0],
-    videoChoice:{}
-  };
+  window.scrollTo({top:0,behavior:"instant"});
 }
 
-let state=initialState();
-
-try{
-  const saved=JSON.parse(localStorage.getItem(STORAGE));
-
-  if(
-    saved &&
-    Array.isArray(saved.manual) &&
-    saved.manual.length===3
-  ){
-    state={...initialState(),...saved};
-  }
-}catch(error){}
-
-state.page=Math.max(
-  0,Math.min(23,Number(state.page)||0)
-);
-state.team=Math.max(
-  0,Math.min(2,Number(state.team)||0)
-);
-state.total=Math.max(
-  0,Math.min(TOTAL,Number(state.total)||0)
-);
-state.section=Math.max(
-  0,
-  Math.min(
-    durations[state.page],
-    Number(state.section)||0
-  )
-);
-
-function save(){
-  try{
-    localStorage.setItem(STORAGE,JSON.stringify(state));
-  }catch(error){}
+function nextPage() {
+  showPage(currentPage + 1);
 }
 
-/* ==========================================
-   ТАЙМЕР
-========================================== */
-
-let timerId=null;
-let lastTick=0;
-
-function formatTime(seconds){
-  return (
-    String(Math.floor(seconds/60)).padStart(2,"0")
-    +":"
-    +String(seconds%60).padStart(2,"0")
-  );
+function previousPage() {
+  showPage(currentPage - 1);
 }
 
-function updateClocks(){
-  document.getElementById("totalClock").textContent=
-    formatTime(state.total);
+// ======================================
+// 40 МИНУТТЫҚ ТАЙМЕР
+// ======================================
 
-  document.getElementById("pageClock").textContent=
-    formatTime(state.section);
+let timeLeft = 2400;
+let timerID = null;
+let lastTick = 0;
+
+function drawTimer() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  document.getElementById("timerDisplay").textContent =
+    String(minutes).padStart(2,"0") + ":" +
+    String(seconds).padStart(2,"0");
 }
 
-function stopTimer(){
-  if(timerId!==null){
-    clearInterval(timerId);
-    timerId=null;
-  }
+function toggleTimer() {
+  const button = document.getElementById("timerButton");
 
-  document.getElementById("timerBtn").textContent=
-    "▶ Бастау";
-}
-
-function toggleTimer(){
-  if(timerId!==null){
-    stopTimer();
+  if (timerID !== null) {
+    clearInterval(timerID);
+    timerID = null;
+    button.textContent = "▶ Жалғастыру";
     return;
   }
 
-  if(state.total<=0)return;
+  if (timeLeft === 0) return;
 
-  lastTick=Date.now();
+  lastTick = Date.now();
+  button.textContent = "⏸ Тоқтату";
 
-  document.getElementById("timerBtn").textContent=
-    "Ⅱ Тоқтату";
+  timerID = setInterval(() => {
+    const now = Date.now();
+    const elapsed = Math.floor((now-lastTick)/1000);
 
-  timerId=setInterval(()=>{
-    const now=Date.now();
-    const elapsed=Math.floor((now-lastTick)/1000);
+    if (elapsed > 0) {
+      timeLeft = Math.max(0,timeLeft-elapsed);
+      lastTick += elapsed*1000;
+      drawTimer();
+    }
 
-    if(elapsed<1)return;
-
-    lastTick+=elapsed*1000;
-
-    state.total=Math.max(
-      0,state.total-elapsed
-    );
-
-    state.section=Math.max(
-      0,state.section-elapsed
-    );
-
-    updateClocks();
-    save();
-
-    if(state.total===0){
-      stopTimer();
-      alert("40 минуттық сабақ аяқталды!");
+    if (timeLeft === 0) {
+      clearInterval(timerID);
+      timerID = null;
+      button.textContent = "Уақыт аяқталды";
     }
   },250);
 }
 
-function resetPageTime(){
-  state.section=durations[state.page];
-  save();
-  updateClocks();
+function resetTimer() {
+  clearInterval(timerID);
+  timerID = null;
+  timeLeft = 2400;
+  document.getElementById("timerButton").textContent =
+    "▶ Бастау";
+  drawTimer();
 }
 
-function resetAll(){
-  if(
-    !confirm(
-      "Барлық ұпай, уақыт және жауаптар жаңартылсын ба?"
-    )
-  )return;
-
-  stopTimer();
-  state=initialState();
-  save();
-  render();
+function showRealClock() {
+  document.getElementById("realClock").textContent =
+    new Intl.DateTimeFormat("kk-KZ",{
+      timeZone:"Asia/Almaty",
+      hour:"2-digit",
+      minute:"2-digit",
+      second:"2-digit",
+      hour12:false
+    }).format(new Date());
 }
 
-/* ==========================================
-   ҚАУІПСІЗ МӘТІН ШЫҒАРУ
-========================================== */
+setInterval(showRealClock,1000);
+showRealClock();
 
-function esc(value){
-  return String(value??"").replace(
-    /[&<>"']/g,
-    c=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    }[c])
+// ======================================
+// ВИКТОРИНА — 12 СҰРАҚ
+// ======================================
+
+const questions = [
+  {
+    q:"Қазақстан тәуелсіздігі қашан жарияланды?",
+    options:[
+      "1990 жылғы 25 қазан",
+      "1991 жылғы 16 желтоқсан",
+      "1992 жылғы 2 наурыз",
+      "1993 жылғы 15 қараша"
+    ],
+    correct:1,
+    fact:"1991 жылғы 16 желтоқсанда тәуелсіздік туралы Конституциялық заң қабылданды."
+  },
+  {
+    q:"Желтоқсан оқиғасы қай қалада өтті?",
+    options:["Астана","Шымкент","Алматы","Тараз"],
+    correct:2,
+    fact:"1986 жылғы Желтоқсан оқиғасы Алматыда өтті."
+  },
+  {
+    q:"Қазақстан БҰҰ-ға қашан қабылданды?",
+    options:[
+      "1991 жылғы 16 желтоқсан",
+      "1992 жылғы 2 наурыз",
+      "1993 жылғы 15 қараша",
+      "1995 жылғы 30 тамыз"
+    ],
+    correct:1,
+    fact:"Қазақстан 1992 жылғы 2 наурызда БҰҰ-ға қабылданды."
+  },
+  {
+    q:"Қазақстанның ұлттық валютасы қалай аталады?",
+    options:["Сом","Рубль","Теңге","Манат"],
+    correct:2,
+    fact:"Қазақстанның ұлттық валютасы — теңге."
+  },
+  {
+    q:"Теңге қашан айналымға енгізілді?",
+    options:[
+      "1992 жылғы 4 маусым",
+      "1993 жылғы 15 қараша",
+      "1995 жылғы 30 тамыз",
+      "1991 жылғы 16 желтоқсан"
+    ],
+    correct:1,
+    fact:"Теңге 1993 жылғы 15 қарашада енгізілді."
+  },
+  {
+    q:"Қазақстанның мемлекеттік тілі қандай?",
+    options:[
+      "Қазақ тілі","Орыс тілі",
+      "Ағылшын тілі","Түрік тілі"
+    ],
+    correct:0,
+    fact:"Қазақстан Республикасының мемлекеттік тілі — қазақ тілі."
+  },
+  {
+    q:"Қазақстан Туы мен Елтаңбасы қай жылы бекітілді?",
+    options:["1990","1991","1992","1995"],
+    correct:2,
+    fact:"Қазақстанның Туы мен Елтаңбасы 1992 жылы бекітілді."
+  },
+  {
+    q:"Қазақстан Туының негізгі түсі қандай?",
+    options:["Қызыл","Көгілдір","Жасыл","Ақ"],
+    correct:1,
+    fact:"Қазақстан Туының негізгі түсі — көгілдір."
+  },
+  {
+    q:"Елтаңбаның ортасында не бейнеленген?",
+    options:["Тау","Күн","Шаңырақ","Бәйтерек"],
+    correct:2,
+    fact:"Елтаңбаның ортасында шаңырақ бейнеленген."
+  },
+  {
+    q:"Қазіргі мемлекеттік Әнұран қай жылы қабылданды?",
+    options:["1992","1998","2006","2012"],
+    correct:2,
+    fact:"Қазіргі Әнұран 2006 жылы қабылданды."
+  },
+  {
+    q:"Конституция күні қашан атап өтіледі?",
+    options:[
+      "16 желтоқсан","30 тамыз",
+      "15 қараша","4 маусым"
+    ],
+    correct:1,
+    fact:"Конституция күні 30 тамызда атап өтіледі."
+  },
+  {
+    q:"2026 жылы тәуелсіздікке неше жыл толады?",
+    options:["30 жыл","32 жыл","35 жыл","40 жыл"],
+    correct:2,
+    fact:"2026 − 1991 = 35 жыл."
+  }
+];
+
+// ======================================
+// КОМАНДАЛАР МЕН ҰПАЙЛАР
+// ======================================
+
+let questionIndex = 0;
+let selectedAnswers = {};
+let gamePoints = [0,0,0];
+let totalPoints = [0,0,0];
+
+function updateScores() {
+  const quizPoints = [0,0,0];
+
+  for (const [index, answer] of
+    Object.entries(selectedAnswers)) {
+    const n = Number(index);
+
+    if (questions[n].correct === answer) {
+      quizPoints[n % 3] += 10;
+    }
+  }
+
+  totalPoints = quizPoints.map(
+    (score,i) => score + gamePoints[i]
   );
-}
 
-/* ==========================================
-   БЕТТЕР
-========================================== */
+  const activeTeam =
+    currentPage === 16 && questionIndex < 12
+      ? questionIndex % 3 : -1;
 
-function changePage(direction){
-  jumpToPage(state.page+direction);
-}
-
-function jumpToPage(value){
-  const next=Number(value);
-
-  if(
-    !Number.isInteger(next) ||
-    next<0 ||
-    next>23
-  )return;
-
-  if(next===state.page)return;
-
-  state.page=next;
-  state.section=durations[next];
-
-  save();
-  render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-function chooseTeam(team){
-  state.team=team;
-  save();
-  render();
-}
-
-function teamTabs(){
-  return `
-    <div class="tabs">
-      ${teams.map((name,i)=>`
-        <button
-          class="${state.team===i?"active":""}"
-          onclick="chooseTeam(${i})">
-          ${icons[i]} ${name}
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
-
-/* ==========================================
-   ҰПАЙ ЖҮЙЕСІ
-========================================== */
-
-function quizKey(){
-  return "q"+(state.page-12)+"_"+state.team;
-}
-
-function cardKey(index){
-  return "c"+(state.page-18)+"_"+state.team+"_"+index;
-}
-
-function oralKey(){
-  return "o"+(state.page-21)+"_"+state.team;
-}
-
-function getScore(team){
-  let total=Number(state.manual[team])||0;
-
-  // Дұрыс тест жауаптары
-  for(let i=0;i<quizzes.length;i++){
-    const key="q"+i+"_"+team;
-    const selected=state.quiz[key];
-
-    if(
-      selected!==undefined &&
-      selected===quizzes[i].tasks[team].correct
-    ){
-      total+=5;
-    }
-  }
-
-  // Карточкалар
-  for(let g=0;g<cardGames.length;g++){
-    for(let c=0;c<2;c++){
-      const key="c"+g+"_"+team+"_"+c;
-      total+=Number(state.cardMarks[key])||0;
-    }
-  }
-
-  // Ауызша ойындар
-  for(let g=0;g<oralGames.length;g++){
-    const key="o"+g+"_"+team;
-    total+=Number(state.oralMarks[key])||0;
-  }
-
-  return Math.max(0,total);
-}
-
-function manualScore(team,points){
-  state.manual[team]+=points;
-  save();
-  render();
-}
-
-function markCard(index,points){
-  state.cardMarks[cardKey(index)]=points;
-  save();
-  render();
-}
-
-function markOral(points){
-  state.oralMarks[oralKey()]=points;
-  save();
-  render();
-}
-
-function renderScores(){
-  document.getElementById("scoreboard").innerHTML=
-    teams.map((name,i)=>`
-      <div class="score">
-        <div class="score-top">
-          <strong>${icons[i]} ${name}</strong>
-          <b>${getScore(i)}</b>
-        </div>
-
-        <div class="score-actions">
-          <button onclick="manualScore(${i},5)">
-            +5
-          </button>
-
-          <button onclick="manualScore(${i},-5)">
-            −5
-          </button>
-        </div>
+  document.getElementById("teamScores").innerHTML =
+    totalPoints.map((score,i) => `
+      <div class="team-row ${activeTeam===i?"current":""}">
+        <span>${i+1}-топ</span>
+        <strong>${score} ұпай</strong>
       </div>
     `).join("");
 }
 
-/* ==========================================
-   YOUTUBE
-========================================== */
-
-function selectVideo(group,index){
-  state.videoChoice[group]=index;
-  save();
-  render();
-}
-
-function videoHTML(group){
-  const list=videos[group];
-
-  const index=Math.min(
-    1,
-    Math.max(0,Number(state.videoChoice[group])||0)
-  );
-
-  const video=list[index];
-
-  return `
-    <div class="card">
-      <h3>🎬 ${esc(video.title)}</h3>
-
-      <p>
-        <strong>Арна:</strong>
-        ${esc(video.channel)}
-      </p>
-
-      <div class="video-pick">
-        <button
-          class="${index===0?"active":""}"
-          onclick="selectVideo('${group}',0)">
-          1-видео
-        </button>
-
-        <button
-          class="${index===1?"active":""}"
-          onclick="selectVideo('${group}',1)">
-          Басқа видео
-        </button>
-      </div>
-
-      <iframe
-        class="video"
-        src="https://www.youtube.com/embed/${video.id}?rel=0&playsinline=1"
-        title="${esc(video.title)}"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture;fullscreen"
-        allowfullscreen>
-      </iframe>
-
-      <div class="controls">
-        <a
-          class="external primary"
-          href="https://www.youtube.com/watch?v=${video.id}"
-          target="_blank"
-          rel="noopener noreferrer">
-          ▶ YouTube-та ашу
-        </a>
-      </div>
-
-      <div class="note">
-        Видеодан сабақ уақытына сай
-        қысқа үзінді көрсетіңдер.
-        Егер сайт ішінде «Видео недоступно»
-        шықса, басқа видеоны таңдаңдар
-        немесе YouTube-та ашыңдар.
-      </div>
-    </div>
-  `;
-}
-
-/* ==========================================
-   ТҮСІНДІРМЕ БЕТТЕРІ 1–12
-========================================== */
-
-function renderLesson(data){
-  let heading="";
-
-  if(data.intro){
-    heading=`
-      <div class="hero">
-        <div class="flag">🇰🇿</div>
-        <h1>${esc(data.title)}</h1>
-        <p>
-          1991–2026 • Тәуелсіздіктің 35 жылдығы
-        </p>
-      </div>
-    `;
-  }else{
-    heading=`<h2>${esc(data.title)}</h2>`;
+function renderQuestion() {
+  if (questionIndex >= questions.length) {
+    showPage(17);
+    return;
   }
 
-  return `
-    <div class="eyebrow">
-      Тарихи түсіндірме • ${state.page+1}/12
-    </div>
+  const item = questions[questionIndex];
 
-    ${heading}
+  document.getElementById("questionNumber").textContent =
+    `Сұрақ ${questionIndex+1} / 12`;
 
-    <div class="card gold">
-      <h3>
-        ${data.intro?"Салтанатты ашылу":esc(data.title)}
-      </h3>
+  document.getElementById("questionText").textContent =
+    item.q;
 
-      ${data.text.map(p=>`
-        <p>${esc(p)}</p>
-      `).join("")}
+  document.getElementById("questionTeam").textContent =
+    `Жауап береді: ${questionIndex%3+1}-топ`;
 
-      <div class="note">
-        ${esc(data.fact)}
-      </div>
-    </div>
+  const answerList = document.getElementById("answerList");
+  answerList.replaceChildren();
 
-    ${data.video?videoHTML(data.video):""}
+  item.options.forEach((text,i) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent = `${"ABCD"[i]}. ${text}`;
+    button.addEventListener("click",()=>chooseAnswer(i));
+    answerList.appendChild(button);
+  });
 
-    <div class="card">
-      <h3>💬 Ойланайық</h3>
+  document.getElementById("questionFeedback").innerHTML = "";
+  document.getElementById("nextQuestionButton")
+    .style.display = "none";
 
-      <div class="question">
-        ${esc(data.question)}
-      </div>
-    </div>
-  `;
-}
-
-/* ==========================================
-   6 ТЕСТ — 13–18 БЕТТЕР
-========================================== */
-
-function renderQuiz(){
-  const gameIndex=state.page-12;
-  const game=quizzes[gameIndex];
-  const task=game.tasks[state.team];
-
-  const key=quizKey();
-  const selected=state.quiz[key];
-  const answered=selected!==undefined;
-
-  return `
-    <div class="eyebrow">
-      Төрт жауапты тест • ${gameIndex+1}/6
-    </div>
-
-    <h2>🎯 ${esc(game.title)}</h2>
-
-    <div class="card">
-      <h3>Ойын ережесі</h3>
-
-      <p>
-        Әр командаға жеке сұрақ беріледі.
-        Төрт жауаптың біреуі дұрыс.
-        Таңдағаннан кейін жауап
-        автоматты тексеріледі.
-      </p>
-
-      <div class="note">
-        Дұрыс жауап — 5 ұпай.
-        Бір тапсырмаға ұпай тек бір рет беріледі.
-      </div>
-    </div>
-
-    <div class="card gold">
-      <h3>Команданы таңдаңдар</h3>
-
-      ${teamTabs()}
-
-      <div class="stage">
-        <div class="stage-label">
-          ${icons[state.team]} ${teams[state.team]}
-        </div>
-
-        <div class="question">
-          ${esc(task.q)}
-        </div>
-
-        <div class="options">
-          ${task.options.map((option,i)=>{
-            let className="";
-
-            if(answered && i===task.correct){
-              className="correct";
-            }else if(answered && i===selected){
-              className="wrong";
-            }
-
-            return `
-              <button
-                class="choice ${className}"
-                onclick="answerQuiz(${i})"
-                ${answered?"disabled":""}>
-                <span class="letter">
-                  ${["A","B","C","D"][i]}
-                </span>
-                <span>${esc(option)}</span>
-              </button>
-            `;
-          }).join("")}
-        </div>
-
-        ${answered?`
-          <div class="feedback
-            ${selected===task.correct?"success":""}">
-
-            ${selected===task.correct?
-              "✅ Дұрыс! Командаға 5 ұпай қосылды.":
-              "❌ Қате. Дұрыс жауап: "+
-              esc(task.options[task.correct])}
-          </div>
-        `:""}
-      </div>
-    </div>
-  `;
-}
-
-function answerQuiz(index){
-  const key=quizKey();
-
-  if(state.quiz[key]!==undefined)return;
-
-  state.quiz[key]=index;
-
-  save();
-  render();
-}
-
-/* ==========================================
-   3 КАРТОЧКАЛЫ ОЙЫН — 19–21 БЕТТЕР
-========================================== */
-
-function toggleCard(index){
-  const key=cardKey(index);
-
-  state.cardOpen[key]=!state.cardOpen[key];
-
-  save();
-  render();
-}
-
-function toggleCardAnswer(index){
-  const key=cardKey(index);
-
-  state.cardAnswer[key]=!state.cardAnswer[key];
-
-  save();
-  render();
-}
-
-function renderCardGame(){
-  const gameIndex=state.page-18;
-  const game=cardGames[gameIndex];
-  const cards=game.tasks[state.team];
-
-  return `
-    <div class="eyebrow">
-      Карточкалы ойын • ${gameIndex+1}/3
-    </div>
-
-    <h2>🃏 ${esc(game.title)}</h2>
-
-    <div class="card">
-      <h3>Ойын ережесі</h3>
-
-      <p>
-        Әр командаға екі карточка беріледі.
-        Карточканы басқанда ішіндегі
-        сұрақ ашылады.
-      </p>
-
-      <p>
-        Команда ауызша жауап береді.
-        Содан кейін «Жауапты көру»
-        батырмасымен тексеруге болады.
-      </p>
-
-      <div class="note">
-        Әр дұрыс карточка — 5 ұпай.
-        Екі карточкадан ең көбі 10 ұпай.
-      </div>
-    </div>
-
-    <div class="card gold">
-      <h3>Команданы таңдаңдар</h3>
-
-      ${teamTabs()}
-
-      <div class="card-grid">
-        ${cards.map((card,i)=>{
-          const key=cardKey(i);
-          const open=!!state.cardOpen[key];
-
-          return `
-            <button
-              class="flip-card ${open?"open":""}"
-              onclick="toggleCard(${i})">
-
-              <span class="symbol">
-                ${open?"📜":"✉️"}
-              </span>
-
-              <strong>
-                ${open?esc(card.q):esc(card.name)}
-              </strong>
-
-              <span>
-                ${open?
-                  "Карточканы жабу":
-                  "Карточканы ашу"}
-              </span>
-            </button>
-          `;
-        }).join("")}
-      </div>
-
-      ${cards.map((card,i)=>{
-        const key=cardKey(i);
-
-        if(!state.cardOpen[key])return "";
-
-        const revealed=!!state.cardAnswer[key];
-        const mark=state.cardMarks[key];
-
-        return `
-          <div class="stage">
-            <div class="stage-label">
-              ${i+1}-карточка
-            </div>
-
-            <div class="question">
-              ${esc(card.q)}
-            </div>
-
-            <div class="controls">
-              <button onclick="toggleCardAnswer(${i})">
-                ${revealed?
-                  "Жауапты жасыру":
-                  "Жауапты көру"}
-              </button>
-            </div>
-
-            ${revealed?`
-              <div class="answer">
-                ${esc(card.a)}
-              </div>
-            `:""}
-
-            <h3>Ұпай беру</h3>
-
-            <div class="controls">
-              <button onclick="markCard(${i},0)">
-                0 ұпай
-              </button>
-
-              <button
-                class="primary"
-                onclick="markCard(${i},5)">
-                5 ұпай
-              </button>
-            </div>
-
-            <div class="note">
-              Осы карточканың нәтижесі:
-              <strong>
-                ${mark===undefined?
-                  "Бағаланбады":
-                  mark+" ұпай"}
-              </strong>
-            </div>
-          </div>
-        `;
-      }).join("")}
-    </div>
-  `;
-}
-
-/* ==========================================
-   3 АУЫЗША ОЙЫН — 22–24 БЕТТЕР
-   МӘТІН ЖАЗЫЛМАЙДЫ
-========================================== */
-
-function renderOralGame(){
-  const gameIndex=state.page-21;
-  const game=oralGames[gameIndex];
-  const key=oralKey();
-  const mark=state.oralMarks[key];
-
-  const last=state.page===23;
-
-  return `
-    <div class="eyebrow">
-      Топтық пікірталас • ${gameIndex+1}/3
-    </div>
-
-    <h2>🎤 ${esc(game.title)}</h2>
-
-    <div class="card">
-      <h3>Ойын ережесі</h3>
-
-      <p>${esc(game.description)}</p>
-
-      <div class="note">
-        ✨ Ештеңе жазудың қажеті жоқ!
-        Үш команда өзара ақылдасып,
-        ойларын тек ауызша айтады.
-      </div>
-
-      <div class="speech-steps">
-
-        <div class="step">
-          🧠 ${last?"30 секунд":"1 минут"}
-          <p>Топ болып ақылдасу</p>
-        </div>
-
-        <div class="step">
-          🎤 ${last?"2 минут":"3 минут"}
-          <p>
-            Үш команданың
-            ойларын айтуы
-          </p>
-        </div>
-
-        <div class="step">
-          🏆 ${last?"1 минут 30 секунд":"Сөйлеу барысында"}
-          <p>
-            ${last?
-              "Қорытынды және қоштасу":
-              "Жауаптарды бағалау"}
-          </p>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="card gold">
-      <h3>Команданы таңдаңдар</h3>
-
-      ${teamTabs()}
-
-      <div class="stage">
-        <div class="stage-label">
-          ${icons[state.team]}
-          ${teams[state.team]} командасы
-        </div>
-
-        <div class="question">
-          ${esc(game.tasks[state.team])}
-        </div>
-
-        <div class="note">
-          🎙️ Команда мүшелері бірігіп
-          ақылдасады.
-
-          Бір оқушы негізгі ойды,
-          екіншісі нақты ұсынысты,
-          үшіншісі сол ұсыныстың
-          пайдасын түсіндіре алады.
-        </div>
-      </div>
-
-      <h3>🏆 Командаға ұпай беру</h3>
-
-      <div class="controls">
-        <button onclick="markOral(0)">
-          0 ұпай
-        </button>
-
-        <button onclick="markOral(5)">
-          5 ұпай
-        </button>
-
-        <button onclick="markOral(10)">
-          10 ұпай
-        </button>
-
-        <button
-          class="primary"
-          onclick="markOral(15)">
-          15 ұпай
-        </button>
-      </div>
-
-      <div class="note">
-        💡 Қызықты идея — 5 ұпай.
-        Нақты ұсыныс — 5 ұпай.
-        Ойды түсінікті жеткізу — 5 ұпай.
-
-        <p>
-          <strong>
-            Нәтиже:
-            ${mark===undefined?
-              "Бағаланбады":
-              mark+" ұпай"}
-          </strong>
-        </p>
-      </div>
-    </div>
-
-    ${last?renderConclusion():""}
-  `;
-}
-
-/* ==========================================
-   24-БЕТ: ҚОРЫТЫНДЫ, ЖЕҢІМПАЗ,
-   «САУ БОЛЫҢЫЗДАР!»
-========================================== */
-
-function renderConclusion(){
-  const results=teams.map((_,i)=>getScore(i));
-
-  const max=Math.max(...results);
-
-  const winners=teams.filter(
-    (_,i)=>results[i]===max
-  );
-
-  let winnerText="";
-
-  if(max===0){
-    winnerText="Әзірге ұпайлар енгізілген жоқ.";
-  }else if(winners.length===1){
-    winnerText=
-      "🥇 Жеңімпаз — "+
-      winners[0]+
-      "! "+max+" ұпай.";
-  }else{
-    winnerText=
-      "Тең нәтиже: "+
-      winners.join(", ")+
-      " — "+max+" ұпай.";
+  if (selectedAnswers[questionIndex] !== undefined) {
+    revealAnswer();
   }
 
-  return `
-    <div class="card gold">
-      <h3>🏆 Сайыс нәтижесі</h3>
-
-      <p>
-        Бүгін үш команда өз білімін,
-        тапқырлығын және
-        шығармашылық қабілетін көрсетті.
-      </p>
-
-      <div class="result">
-        ${esc(winnerText)}
-      </div>
-    </div>
-
-    <div class="farewell">
-      <div class="flag">🇰🇿</div>
-
-      <h3>Қорытынды сөз</h3>
-
-      <p>
-        Құрметті ұстаздар,
-        студенттер және қадірлі қонақтар!
-      </p>
-
-      <p>
-        Осымен «Тәуелсіздік — ұрпаққа аманат»
-        атты ашық тәрбие сағатымыз
-        өз мәресіне жетті.
-      </p>
-
-      <p>
-        Бүгінгі іс-шарамызға белсенді
-        қатысқан барлық командаларға,
-        назар қойып тыңдаған
-        көрермендерге алғысымызды білдіреміз.
-      </p>
-
-      <p>
-        Тәуелсіздігіміз тұғырлы,
-        еліміз аман,
-        болашағымыз жарқын болсын!
-      </p>
-
-      <div class="big">
-        🇰🇿 Назарларыңызға рақмет!
-        Сау болыңыздар!
-      </div>
-    </div>
-  `;
+  updateScores();
 }
 
-/* ==========================================
-   БЕТТЕРДІ КӨРСЕТУ
-========================================== */
+function chooseAnswer(index) {
+  if (selectedAnswers[questionIndex] !== undefined) return;
 
-function render(){
-  document.getElementById("pageCount").textContent=
-    (state.page+1)+" / 24";
+  selectedAnswers[questionIndex] = index;
+  revealAnswer();
+  updateScores();
+}
 
-  document.getElementById("progressBar").style.width=
-    ((state.page+1)/24*100)+"%";
+function revealAnswer() {
+  const item = questions[questionIndex];
+  const selected = selectedAnswers[questionIndex];
+  const correct = selected === item.correct;
 
-  const selector=document.getElementById("jumpSelect");
+  document.querySelectorAll("#answerList button")
+    .forEach((button,i) => {
+      button.disabled = true;
 
-  if(selector.options.length===0){
-    for(let i=0;i<24;i++){
-      const option=document.createElement("option");
+      if (i === item.correct) {
+        button.classList.add("correct");
+      } else if (i === selected) {
+        button.classList.add("wrong");
+      }
+    });
 
-      option.value=i;
+  const feedback = document.getElementById("questionFeedback");
+  feedback.replaceChildren();
 
-      option.textContent=
-        (i+1)+"-бет — "+
-        (
-          i<12?"Түсіндірме":
-          i<18?"Тест":
-          i<21?"Карточкалар":
-          "Ауызша ойын"
-        );
+  const card = document.createElement("div");
+  card.className = "frame " +
+    (correct ? "green-border" : "red-border");
 
-      selector.appendChild(option);
+  const heading = document.createElement("h3");
+  heading.textContent =
+    correct ? "✅ Дұрыс! +10 ұпай" : "❌ Қате жауап";
+
+  const explanation = document.createElement("p");
+  explanation.textContent = item.fact;
+
+  card.append(heading,explanation);
+  feedback.appendChild(card);
+
+  const button = document.getElementById("nextQuestionButton");
+  button.style.display = "inline-block";
+  button.textContent = questionIndex === 11
+    ? "Командалық ойын →"
+    : "Келесі сұрақ →";
+}
+
+function nextQuestion() {
+  questionIndex++;
+
+  if (questionIndex >= questions.length) {
+    showPage(17);
+  } else {
+    renderQuestion();
+  }
+}
+
+// ======================================
+// КОМАНДАЛЫҚ ОЙЫН
+// ======================================
+
+function renderGame() {
+  const container = document.getElementById("gameControls");
+  container.replaceChildren();
+
+  for (let i=0;i<3;i++) {
+    const frame = document.createElement("div");
+    frame.className = "frame";
+
+    const heading = document.createElement("h3");
+    heading.textContent =
+      `${i+1}-топ — ${gamePoints[i]} ұпай`;
+
+    frame.appendChild(heading);
+
+    [0,5,10].forEach(value => {
+      const button = document.createElement("button");
+      button.className = "action";
+      button.textContent = `${value} ұпай`;
+      button.addEventListener("click",()=>{
+        gamePoints[i] = value;
+        updateScores();
+        renderGame();
+      });
+      frame.appendChild(button);
+    });
+
+    container.appendChild(frame);
+  }
+}
+
+// ======================================
+// ҚОРЫТЫНДЫ
+// ======================================
+
+function renderFinal() {
+  updateScores();
+
+  const max = Math.max(...totalPoints);
+  const winners = totalPoints
+    .map((score,i)=>score===max?`${i+1}-топ`:null)
+    .filter(Boolean);
+
+  const container = document.getElementById("finalScores");
+  container.replaceChildren();
+
+  totalPoints.forEach((score,i)=>{
+    const card = document.createElement("div");
+    card.className = "score-card";
+    card.textContent = `${i+1}-топ: ${score} ұпай`;
+    container.appendChild(card);
+  });
+
+  const heading = document.createElement("h3");
+  heading.className = "green";
+  heading.textContent = max === 0
+    ? "Әзірге ұпай жоқ"
+    : `🏆 Жеңімпаз: ${winners.join(", ")}`;
+
+  container.appendChild(heading);
+}
+
+function resetScores() {
+  if (!confirm("Барлық жауаптар мен ұпайларды тазалайсыз ба?"))
+    return;
+
+  questionIndex = 0;
+  selectedAnswers = {};
+  gamePoints = [0,0,0];
+
+  updateScores();
+  renderGame();
+
+  if (currentPage === 16) renderQuestion();
+  if (currentPage === 18) renderFinal();
+}
+
+// ======================================
+// ТОЛЫҚ ЭКРАН
+// ======================================
+
+async function toggleFullscreen() {
+  try {
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    } else {
+      await document.documentElement.requestFullscreen();
     }
+  } catch (error) {
+    alert("Толық экран қолжетімсіз.");
   }
-
-  selector.value=String(state.page);
-
-  let html="";
-
-  if(state.page<12){
-    html=renderLesson(lessons[state.page]);
-  }
-  else if(state.page<18){
-    html=renderQuiz();
-  }
-  else if(state.page<21){
-    html=renderCardGame();
-  }
-  else{
-    html=renderOralGame();
-  }
-
-  document.getElementById("screen").innerHTML=html;
-
-  updateClocks();
-  renderScores();
 }
 
-/* САЙТТЫ ІСКЕ ҚОСУ */
+// ======================================
+// ПЕРНЕТАҚТАМЕН БАСҚАРУ
+// ======================================
 
-render();
+document.addEventListener("keydown",event=>{
+  const tag = document.activeElement.tagName;
+
+  if (["INPUT","TEXTAREA","SELECT"].includes(tag))
+    return;
+
+  if (event.key === "ArrowRight") nextPage();
+  if (event.key === "ArrowLeft") previousPage();
+});
+
+// ======================================
+// ІСКЕ ҚОСУ
+// ======================================
+
+drawTimer();
+updateScores();
+renderGame();
+showPage(0);
 
 </script>
 </body>
